@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split-It</title>
+    <link rel="stylesheet" href="groupstyle.css">
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Header -->
+        <header class="page-header">
+            <h1>Split-It</h1>
+            <p>A mid splitwise clone!</p>
+        </header>
+
+        <!-- View: Group List -->
+        <div id="groups-view" class="view active">
+            <div class="view-header">
+                <h2>My Groups</h2>
+                <button id="open-create-group-modal" class="btn btn-primary">
+                    <span>+ New Group</span>
+                </button>
+            </div>
+            <div id="groups-list" class="groups-grid">
+                <!-- Group cards will be injected by JS -->
+            </div>
+             <p id="no-groups-message" class="placeholder-text hidden">You have no groups. Create one to get started!</p>
+        </div>
+
+        <!-- View: Group Details -->
+        <div id="group-details-view" class="view">
+            <button id="back-to-groups" class="btn btn-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                <span>All Groups</span>
+            </button>
+            <h2 id="group-name-header" class="group-title"></h2>
+            
+            
+            <div class="details-grid">
+                <!-- Balances & Members column -->
+                <div class="column">
+                    <h3 class="section-header">Balances</h3>
+                    <div id="balances-list">
+                        <!-- Balances -->
+                    </div>
+
+                    <h3 class="section-header">Members</h3>
+                    <div id="members-list">
+                        <!-- Members -->
+                    </div>
+                    <button id="open-add-member-modal" class="btn btn-primary btn-full-width">Add Member</button>
+                </div>
+
+                <!-- Right Column: Expenses -->
+                <div class="column">
+                    <div>
+                        <h3 class="section-header">Expenses</h3>
+                        <button id="open-add-expense-modal" class="btn btn-primary">Add Expense</button>
+                    </div>
+                    <div id="expenses-list" class="expenses-container" style="margin-top: 15px;">
+                        <!-- Expenses -->
+                    </div>
+                     <p id="no-expenses-message" class="placeholder-text hidden">No expenses yet. Add one!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create new group modal -->
+    <div id="create-group-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 class="modal-title">Create a New Group</h2>
+            <form id="create-group-form">
+                <label for="group-name" class="form-label">Group Name</label>
+                <input type="text" id="group-name" class="form-input" required>
+                <div class="form-actions">
+                    <button type="button" id="cancel-create-group" class="btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Member modal -->
+    <div id="add-member-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 class="modal-title">Add a New Member</h2>
+            <form id="add-member-form">
+                <label for="member-name" class="form-label" >Member Name</label>
+                <input type="text" id="member-name" class="form-input" required>
+                <div class="form-actions">
+                    <button type="button" id="cancel-add-member" class="btn">Cancel</button>
+                    <button type="submit" class="btn">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Expense modal -->
+    <div id="add-expense-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 class="modal-title">Add an Expense</h2>
+            <form id="add-expense-form">
+                <div>
+                    <label for="expense-description" class="form-label">Description</label>
+                    <input type="text" id="expense-description" class="form-input" required>
+                </div>
+                <div>
+                    <label for="expense-amount" class="form-label">Amount</label>
+                    <input type="number" id="expense-amount" step="0.01" min="0.01" class="form-input" required>
+                </div>
+                <div>
+                    <label for="expense-paid-by" class="form-label">Paid by</label>
+                    <select id="expense-paid-by" class="form-input" required>
+                        <!-- Members here -->
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="cancel-add-expense" class="btn">Cancel</button>
+                    <button type="submit" class="btn">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="grouplogic.js"></script>
+</body>
+</html>
+
